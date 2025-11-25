@@ -1,0 +1,1 @@
+def solution(a,b,c,d):g=(lambda f:(lambda x,y:f(f,x,y)))(lambda s,x,y:x if y==0 else s(s,y,x-y*(x//y)));n=a*d+c*b;D=b*d;G=g(n,D);return[n//G,D//G]
