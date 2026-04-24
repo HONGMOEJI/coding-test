@@ -1,24 +1,30 @@
-import java.util.HashSet;
-import java.util.Set;
+import java.util.HashMap;
+import java.util.Map;
+
 
 class Solution {
-    public boolean solution(String[] phone_book) {
-        Set<String> set = new HashSet<>();
+    public boolean solution(String[] phoneBook) {
+        boolean answer = true;
 
-        for (String phone : phone_book) {
-            set.add(phone);
-        }
+            Map<String, Integer> map = new HashMap<>();
 
-        for (String phone : phone_book) {
-            for (int i = 1; i < phone.length(); i++) {
-                String prefix = phone.substring(0, i);
+            for(int i = 0; i < phoneBook.length; i++) {
+                map.put(phoneBook[i], i);
+            }
 
-                if (set.contains(prefix)) {
-                    return false;
+
+            for(int i = 0; i < phoneBook.length; i++) {
+                for(int j = 0; j < phoneBook[i].length(); j++) {
+                    if(map.containsKey(phoneBook[i].substring(0,j))) {
+                        answer = false;
+                        return answer;
+                    }
                 }
             }
-        }
 
-        return true;
+
+
+
+            return answer;
     }
 }
